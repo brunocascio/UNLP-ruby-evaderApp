@@ -6,10 +6,12 @@
 
 ## Run
 
-`bundle exec rails s`
+Execute migrations: `rake db:migrate`
+
+Run the server: `bundle exec rails s`
 
 **NOTE:** If you use vagrant, should use `bundle exec rails s -b 0.0.0.0`
 
 ## Tests
 
-`rake test`
+`rake test --verbose`
