@@ -1,0 +1,25 @@
+class Client < ActiveRecord::Base
+  enum genre: {male: 0, female: 1}
+
+  validates :firstname, :lastname,
+    presence: true,
+    format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" },
+    length: { minimum: 2, maximum: 30 }
+
+  validates :genre,
+    presence: true,
+    inclusion: { in: Client.genres.keys }
+
+  validates :birthdate,
+    presence: true
+
+  validates :cuilt,
+    presence: true,
+    uniqueness: true
+
+  validates :identification_number,
+    presence: true,
+    numericality: { only_integer: true },
+    format: { with: /\A[0-9]+\z/, message: "only allows numbers" },
+    length: { minimum: 6, maximum: 8 }
+end
