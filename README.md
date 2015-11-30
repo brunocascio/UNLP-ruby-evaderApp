@@ -14,4 +14,10 @@ Run the server: `bundle exec rails s`
 
 ## Tests
 
+Migrate to test database:
+
+`rake db:migrate RAILS_ENV=test`
+
+Executes the tests:
+
 `rake test --verbose`
