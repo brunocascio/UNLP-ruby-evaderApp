@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151128193209) do
+ActiveRecord::Schema.define(version: 20151129231511) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "firstname",                        null: false
@@ -25,5 +25,13 @@ ActiveRecord::Schema.define(version: 20151128193209) do
   end
 
   add_index "clients", ["cuilt"], name: "index_clients_on_cuilt", unique: true
+
+  create_table "contacts", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "contacts", ["name"], name: "index_contacts_on_name", unique: true
 
 end
