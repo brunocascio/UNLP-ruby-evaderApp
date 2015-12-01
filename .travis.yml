@@ -3,6 +3,14 @@ sudo: false
 rvm:
   - 2.2.3
   - ruby-head
-cache: bundler
 before_install:
-- gem update bundler
+  - gem install bundler
+  - "rm ${BUNDLE_GEMFILE}.lock"
+  - curl -L https://github.com/kr/beanstalkd/archive/v1.10.tar.gz | tar xz -C /tmp
+  - cd /tmp/beanstalkd-1.10/
+  - make
+  - ./beanstalkd &
+  - cd $TRAVIS_BUILD_DIR
+before_script:
+  - bundle update
+cache: bundler
