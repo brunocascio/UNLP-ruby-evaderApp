@@ -1,7 +1,6 @@
 language: ruby
 rvm:
   - 2.2.3
-  - ruby-head
 before_install:
   - npm install -g npm@3.x-latest
   - gem install bundler
@@ -12,5 +11,6 @@ before_install:
   - ./beanstalkd &
   - cd $TRAVIS_BUILD_DIR
 before_script:
-  - bundle update
+  - bundle install
+  - RAILS_ENV=test bundle exec rake db:drop db:create db:migrate
 cache: bundler
