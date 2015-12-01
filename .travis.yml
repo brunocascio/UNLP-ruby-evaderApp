@@ -1,9 +1,9 @@
 language: ruby
-sudo: false
 rvm:
   - 2.2.3
   - ruby-head
 before_install:
+  - npm install -g npm@3.x-latest
   - gem install bundler
   - "rm ${BUNDLE_GEMFILE}.lock"
   - curl -L https://github.com/kr/beanstalkd/archive/v1.10.tar.gz | tar xz -C /tmp
