@@ -39,7 +39,7 @@ end
 
 group :test do
   # Required for travis
-  gem 'rack', github: 'rack/rack', branch: 'master'
+  gem 'rake', '>= 10.3'
 end
 
 group :development do
