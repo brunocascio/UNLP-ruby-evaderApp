@@ -22,4 +22,18 @@ class ContactTest < ActiveSupport::TestCase
   test "Try to creates contact with duplicated type" do
     assert_not Contact.new(name: 'email').save(), "Shouldn't create a new contact with duplicated name"
   end
+
+  test "Try to associate a contact with a client" do
+    c = Contact.first
+    c.clients_contacts.build(value: 'mail@mail.com', client: clients(:client3))
+    assert c.save, "Should create a contact with associated client"
+    assert c.clients_contacts.last.client.firstname == clients(:client3).firstname
+    assert c.clients_contacts.last.value == 'mail@mail.com'
+  end
+
+  test "Try to delete all contacts" do
+    Contact.all.each do |c|
+      assert c.destroy(), "Should delete contact."
+    end
+  end
 end

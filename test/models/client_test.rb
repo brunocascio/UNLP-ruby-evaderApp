@@ -28,6 +28,14 @@ class ClientTest < ActiveSupport::TestCase
     assert Client.new(@data).save(), "Should create a client with valid data"
   end
 
+  test "Try to associate a client with a contact" do
+    c = Client.first
+    c.clients_contacts.build(value: 'mail@mail.com', contact: contacts(:email))
+    assert c.save, "Should create a client with associated contact data"
+    assert c.clients_contacts.last.contact.name == contacts(:email).name
+    assert c.clients_contacts.last.value == 'mail@mail.com'
+  end
+
   test "Try to create a client with invalid data" do
     @data = {
       firstname: 'Pepe',
@@ -96,17 +104,9 @@ class ClientTest < ActiveSupport::TestCase
     assert_not Client.new(@data).save(), "Shouldn't create a duplicate client with same cuil/cuit."
   end
 
-  test "Try to delete a client" do
-    @data = {
-      firstname: 'Jose',
-      lastname: 'Fernandez',
-      cuilt: '20-25231321-2',
-      birthdate: Date.parse('1971-3-1'),
-      genre: 0,
-      identification_number: '25231321'
-    }
-    @client = Client.new(@data)
-    @client.save()
-    assert @client.destroy(), "Should delete client."
+  test "Try to delete all clients" do
+    Client.all.each do |c|
+      assert c.destroy(), "Should delete client."
+    end
   end
 end
