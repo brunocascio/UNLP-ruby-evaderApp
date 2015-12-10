@@ -1,4 +1,7 @@
 class Contact < ActiveRecord::Base
+  has_many :clients_contacts
+  has_many :clients, through: :clients_contacts
+
   validates :name,
     presence: true,
     uniqueness: true,

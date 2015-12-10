@@ -1,5 +1,7 @@
 class Client < ActiveRecord::Base
   enum genre: {male: 0, female: 1}
+  has_many :clients_contacts
+  has_many :contacts, through: :clients_contacts
 
   validates :firstname, :lastname,
     presence: true,
