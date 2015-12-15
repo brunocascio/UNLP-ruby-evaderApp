@@ -79,6 +79,17 @@ class ClientTest < ActiveSupport::TestCase
     @birthdateInvalidClient[:birthdate] = '616161'
     assert_not Client.new(@birthdateInvalidClient).save(), "Shouldn't create a client with invalid birthdate format"
 
+    # Cuil/Cuit Validations
+    @cuiltInvalidClient = @data.clone
+    @cuiltInvalidClient[:cuilt] = '20-232a3456-7'
+    assert_not Client.new(@cuiltInvalidClient).save(), "Shouldn't create a client with invalid cuil/cuilt format"
+    @cuiltInvalidClient[:cuilt] = '2a-23223452-0'
+    assert_not Client.new(@cuiltInvalidClient).save(), "Shouldn't create a client with invalid cuil/cuilt format"
+    @cuiltInvalidClient[:cuilt] = '--'
+    assert_not Client.new(@cuiltInvalidClient).save(), "Shouldn't create a client with invalid cuil/cuilt format"
+    @cuiltInvalidClient[:cuilt] = '12345678--3'
+    assert_not Client.new(@cuiltInvalidClient).save(), "Shouldn't create a client with invalid cuil/cuilt format"
+
     # identification Number Validations
     @INInvalidClient = @data.clone
     @INInvalidClient[:identification_number] = ''

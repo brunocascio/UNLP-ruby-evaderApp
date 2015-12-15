@@ -10,13 +10,14 @@ class Client < ActiveRecord::Base
 
   validates :genre,
     presence: true,
-    inclusion: { in: Client.genres.keys }
+    inclusion: { in: self.genres.keys }
 
   validates :birthdate,
     presence: true
 
   validates :cuilt,
     presence: true,
+    format: { with: /\A\d{2}\-\d{8}\-\d{1}\z/, message: "must numerically with format XX-XXXXXXXX-X" },
     uniqueness: true
 
   validates :identification_number,
