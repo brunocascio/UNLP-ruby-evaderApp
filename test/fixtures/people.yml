@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+personWithName:
+  name: Pepito Perez
+  person_type: 0
+  cuilt: 20-45678347-3
+
+personWithName2:
+  name: Maria Perez
+  person_type: 0
+  cuilt: 20-13678247-0
+
+personWithReason:
+  name: UNLP
+  person_type: 1
+  cuilt: 20-23648345-7
+
+personWithReason2:
+  name: UNS
+  person_type: 1
+  cuilt: 20-12345678-7
