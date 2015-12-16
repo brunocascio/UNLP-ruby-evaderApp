@@ -2,6 +2,8 @@ class Client < ActiveRecord::Base
   enum genre: {male: 0, female: 1}
   has_many :clients_contacts
   has_many :contacts, through: :clients_contacts
+  has_many :invoices, dependent: :restrict_with_error
+  has_many :people, through: :invoices
 
   validates :firstname, :lastname,
     presence: true,
@@ -13,7 +15,11 @@ class Client < ActiveRecord::Base
     inclusion: { in: self.genres.keys }
 
   validates :birthdate,
-    presence: true
+    presence: true,
+    date: {
+      after: Proc.new { Time.now - 100.year },
+      before: Proc.new { Time.now - 18.year }
+    }
 
   validates :cuilt,
     presence: true,

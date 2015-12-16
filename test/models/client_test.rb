@@ -41,7 +41,7 @@ class ClientTest < ActiveSupport::TestCase
       firstname: 'Pepe',
       lastname: 'Perez',
       cuilt: '20-35232322-3',
-      birthdate: Date.parse('1991-6-7'),
+      birthdate: '1991-6-7',
       genre: 0,
       identification_number: '35415987'
     }
@@ -64,20 +64,14 @@ class ClientTest < ActiveSupport::TestCase
     @lastnameInvalidClient[:lastname] = 'a'
     assert_not Client.new(@lastnameInvalidClient).save(), "Shouldn't create a client lastname with only 1 letter"
 
-    # Genre Validations
-    # TODO: rails ArgumentError ?
-    # @genreInvalidClient = @data.clone
-    # @genreInvalidClient[:genre] = ''
-    # assert_not Client.new(@genreInvalidClient).save(), "Shouldn't create a client with blank genre"
-    # @genreInvalidClient[:genre] = '...'
-    # assert_not Client.new(@genreInvalidClient).save(), "Shouldn't create a client with invalid genre (passing invalid int)"
-    # @genreInvalidClient[:genre] = 'catinga'
-    # assert_not Client.new(@genreInvalidClient).save(), "Shouldn't create a client with invalid genre (passing invalid symbol)"
-
     # Birthdate Validations
     @birthdateInvalidClient = @data.clone
     @birthdateInvalidClient[:birthdate] = '616161'
     assert_not Client.new(@birthdateInvalidClient).save(), "Shouldn't create a client with invalid birthdate format"
+    @birthdateInvalidClient[:birthdate] = '1900-1-1'
+    assert_not Client.new(@birthdateInvalidClient).save()
+    @birthdateInvalidClient[:birthdate] = '2009-1-1'
+    assert_not Client.new(@birthdateInvalidClient).save()
 
     # Cuil/Cuit Validations
     @cuiltInvalidClient = @data.clone
@@ -115,9 +109,13 @@ class ClientTest < ActiveSupport::TestCase
     assert_not Client.new(@data).save(), "Shouldn't create a duplicate client with same cuil/cuit."
   end
 
-  test "Try to delete all clients" do
+  test "Try to delete clients" do
     Client.all.each do |c|
-      assert c.destroy(), "Should delete client."
+      if (c.invoices.count == 0)
+        assert c.destroy(), "Should delete client."
+      else
+        assert_not c.destroy(), "Shouldn't delete a client with invoices."
+      end
     end
   end
 end

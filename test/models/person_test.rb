@@ -36,8 +36,12 @@ class PersonTest < ActiveSupport::TestCase
   end
 
   test "Try to delete all contacts" do
-    Person.all.each do |c|
-      assert c.destroy(), "Should delete person #{c.id}: #{c.name}."
+    Person.all.each do |p|
+      if (p.invoices.count == 0)
+        assert p.destroy(), "Should delete a person."
+      else
+        assert_not p.destroy(), "Shouldn't delete person #{p.id}: #{p.name} with associated invoices."
+      end
     end
   end
 end

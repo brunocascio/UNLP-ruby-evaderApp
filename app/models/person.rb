@@ -1,5 +1,7 @@
 class Person < ActiveRecord::Base
   enum person_type: {fisic: 0, juridic: 1}
+  has_many :invoices, dependent: :restrict_with_error
+  has_many :clients, through: :invoices
 
   validates :name,
     presence: true,
