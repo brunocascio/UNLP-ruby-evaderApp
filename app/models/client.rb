@@ -7,7 +7,7 @@ class Client < ActiveRecord::Base
 
   validates :firstname, :lastname,
     presence: true,
-    format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" },
+    format: { with: /\A[a-zA-Z\s]+\z/, message: "only allows letters" },
     length: { minimum: 2, maximum: 30 }
 
   validates :genre,
