@@ -27,9 +27,7 @@
             <td><%= person.person_type %></td>
             <td><%= person.cuilt %></td>
             <td>
-              <%= link_to 'Show', person %>
-              <%= link_to 'Edit', edit_person_path(person) %>
-              <%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= render template: 'shared/_actions', locals: {model: people} %>
             </td>
           </tr>
         <% end %>

@@ -32,9 +32,7 @@
             <td><%= invoice.client %></td>
             <td><%= invoice.person %></td>
             <td>
-              <%= link_to 'Show', invoice %>
-              <%= link_to 'Edit', edit_invoice_path(invoice) %>
-              <%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= render template: 'shared/_actions', locals: {model: invoice} %>
             </td>
           </tr>
         <% end %>

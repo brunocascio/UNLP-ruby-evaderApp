@@ -34,9 +34,7 @@
             <td><%= client.identification_number %></td>
             <td><%= client.cuilt %></td>
             <td>
-              <%= link_to 'Show', client %>
-              <%= link_to 'Edit', edit_client_path(client) %>
-              <%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= render template: 'shared/_actions', locals: {model: client} %>
             </td>
           </tr>
         <% end %>

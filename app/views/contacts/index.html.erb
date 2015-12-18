@@ -22,9 +22,7 @@
           <tr>
             <td><%= contact.name %></td>
             <td>
-              <%= link_to 'Show', contact %>
-              <%= link_to 'Edit', edit_contact_path(contact) %>
-              <%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= render template: 'shared/_actions', locals: {model: contact} %>
             </td>
           </tr>
         <% end %>
