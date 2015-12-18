@@ -1,0 +1,13 @@
+<%= simple_form_for(@contact) do |f| %>
+
+  <%= render template: 'shared/_notifications', :locals => { :model => @contact }  %>
+
+  <div class="field">
+    <%= f.input :name, placeholder: 'Name' %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+
+<% end %>
