@@ -47,4 +47,7 @@ end
 
 # Custom gems
 
+gem "twitter-bootstrap-rails"
+gem "simple_form"
+gem "nested_form"
 gem "date_validator"
