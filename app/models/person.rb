@@ -16,4 +16,8 @@ class Person < ActiveRecord::Base
     presence: true,
     uniqueness: true,
     format: { with: /\A\d{2}\-\d{8}\-\d{1}\z/, message: "must numerically with format XX-XXXXXXXX-X" }
+
+  def to_s
+    self.name
+  end
 end

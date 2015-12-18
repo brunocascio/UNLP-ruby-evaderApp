@@ -31,4 +31,13 @@ class Client < ActiveRecord::Base
     numericality: { only_integer: true },
     format: { with: /\A[0-9]+\z/, message: "only allows numbers" },
     length: { minimum: 6, maximum: 8 }
+
+
+  def full_name
+    self.firstname << ' ' << self.lastname
+  end
+
+  def to_s
+    self.full_name
+  end
 end
