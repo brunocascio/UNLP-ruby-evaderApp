@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :clients
   resources :people
   resources :contacts
   # The priority is based upon order of creation: first created -> highest priority.

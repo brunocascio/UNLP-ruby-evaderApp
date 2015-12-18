@@ -1,0 +1,41 @@
+<%= render template: 'shared/_notices' %>
+
+<div class="col-sm-8 col-sm-offset-2">
+  <div class="row pull-right">
+    <%= link_to 'New Client', new_client_path, :class => 'btn btn-success' %>
+  </div>
+  <hr>
+  <div class="row">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Birthdate</th>
+          <th>Genre</th>
+          <th>Identification number</th>
+          <th>Cuilt</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @clients.each do |client| %>
+          <tr>
+            <td><%= client.firstname %></td>
+            <td><%= client.lastname %></td>
+            <td><%= client.birthdate %></td>
+            <td><%= client.genre %></td>
+            <td><%= client.identification_number %></td>
+            <td><%= client.cuilt %></td>
+            <td>
+              <%= link_to 'Show', client %>
+              <%= link_to 'Edit', edit_client_path(client) %>
+              <%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
