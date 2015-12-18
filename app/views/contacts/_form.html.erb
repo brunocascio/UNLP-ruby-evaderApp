@@ -1,6 +1,6 @@
 <%= simple_form_for(@contact) do |f| %>
 
-  <%= render template: 'shared/_notifications', :locals => { :model => @contact }  %>
+  <%= f.error_notification %>
 
   <div class="field">
     <%= f.input :name, placeholder: 'Name' %>
