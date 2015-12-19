@@ -22,7 +22,7 @@ es:
   invoices: Facturas
   clients: Clientes
   contacts: Contactos
-  contacts_type: Tipos de Contacto
+  contact_types: Tipos de Contacto
   people: Personas
   show: Ver
   destroy: Eliminar
