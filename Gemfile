@@ -47,6 +47,7 @@ end
 
 # Custom gems
 
+gem 'nprogress-rails'
 gem "faker", :group => [ :development ]
 gem "twitter-bootstrap-rails"
 gem "simple_form"
