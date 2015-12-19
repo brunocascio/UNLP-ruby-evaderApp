@@ -8,7 +8,7 @@
     <%= f.input :genre, :collection => Client.genres.keys %>
     <%= f.input :identification_number %>
     <%= f.input :cuilt %>
-    <label><%= t "contacts_types" %></label>
+    <label><%= t "contact_types" %></label>
     <p><%= f.link_to_add t("new_contact"), :clients_contacts, :class => 'btn btn-sm btn-success', :data => { :target => "#clients_contacts" } %></p>
     <table class="table" id="clients_contacts">
       <%= f.fields_for :clients_contacts, :wrapper => false do |cc| %>
@@ -22,7 +22,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, :class => 'btn btn-success' %>
-    <%= link_to 'Back', clients_path, :class => 'btn btn-danger' %>
+    <%= f.button :submit, :class => 'btn btn-success', value: t('save') %>
+    <%= link_to t('back'), clients_path, :class => 'btn btn-danger' %>
   </div>
 <% end %>
