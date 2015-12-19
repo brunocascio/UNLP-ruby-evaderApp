@@ -1,5 +1,10 @@
 es:
   simple_form:
+    options:
+      defaults:
+        genre:
+          male: Masculino
+          female: Femenino
     labels:
       user:
         login: Usuario

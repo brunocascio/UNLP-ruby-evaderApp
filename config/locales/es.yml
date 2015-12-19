@@ -8,6 +8,30 @@ es:
   male: Masculino
   month: Mes
   total_invoices: Total de facturas
+  description: Descripción
+  amount: Monto
+  issue_date: Fecha de Emisión
+  client: Cliente
+  person: Persona
+  actions: Acciones
+  name: Nombre
+  person_type: Tipo de persona
+  firstname: Nombre
+  lastname: Apellido
+  birthdate: Fecha de Nacimiento
+  invoices: Facturas
+  clients: Clientes
+  contacts: Contactos
+  contacts_type: Tipos de Contacto
+  people: Personas
+  show: Ver
+  edit: Editar
+  destroy: Eliminar
+  new_client: Nuevo Cliente
+  new_person: Nueva Persona
+  new: Crear
+  remove: Remover
+  add_new: Agregar Nuevo
   date:
     abbr_day_names:
     - dom

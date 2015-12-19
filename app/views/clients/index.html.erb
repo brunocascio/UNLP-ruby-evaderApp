@@ -5,7 +5,7 @@
   </div>
 
   <div class="row pull-right">
-    <%= link_to 'New Client', new_client_path, :class => 'btn btn-sm btn-success' %>
+    <%= link_to t('new_client'), new_client_path, :class => 'btn btn-sm btn-success' %>
   </div>
 
   <hr>
@@ -14,13 +14,13 @@
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
-          <th>Firstname</th>
-          <th>Lastname</th>
-          <th>Birthdate</th>
-          <th>Genre</th>
-          <th>Identification number</th>
-          <th>Cuilt</th>
-          <th>Actions</th>
+          <th><%= t "firstname" %></th>
+          <th><%= t "lastname" %></th>
+          <th><%= t "birthdate" %></th>
+          <th><%= t "genre" %></th>
+          <th><%= t "identification_number" %></th>
+          <th><%= t "cuil_cuit" %></th>
+          <th><%= t "actions" %></th>
         </tr>
       </thead>
 

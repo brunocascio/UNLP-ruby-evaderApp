@@ -1,3 +1,3 @@
-<%= link_to 'Show', model, :class => 'btn btn-sm btn-info' %>
-<%= link_to 'Edit', send("edit_#{get_classname_as_string(model)}_path", model), :class => 'btn btn-sm btn-primary' %>
-<%= link_to 'Destroy', model, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %>
+<%= link_to t('show'), model, :class => 'btn btn-sm btn-info' %>
+<%= link_to t('edit'), send("edit_#{get_classname_as_string(model)}_path", model), :class => 'btn btn-sm btn-primary' %>
+<%= link_to t('destroy'), model, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-sm btn-danger' %>

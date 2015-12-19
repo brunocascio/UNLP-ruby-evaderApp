@@ -5,7 +5,7 @@
   </div>
 
   <div class="row pull-right">
-    <%= link_to 'New Person', new_person_path, :class => 'btn btn-sm btn-success' %>
+    <%= link_to t('new_person'), new_person_path, :class => 'btn btn-sm btn-success' %>
   </div>
 
   <hr>
@@ -14,10 +14,10 @@
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Person type</th>
-          <th>Cuilt</th>
-          <th>Actions</th>
+          <th><%= t "name" %></th>
+          <th><%= t "person_type" %></th>
+          <th><%= t "cuil_cuit" %></th>
+          <th><%= t "actions" %></th>
         </tr>
       </thead>
       <tbody>
@@ -27,7 +27,7 @@
             <td><%= person.person_type %></td>
             <td><%= person.cuilt %></td>
             <td>
-              <%= render template: 'shared/_actions', locals: {model: people} %>
+              <%= render template: 'shared/_actions', locals: {model: person} %>
             </td>
           </tr>
         <% end %>
