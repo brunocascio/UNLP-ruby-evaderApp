@@ -17,7 +17,7 @@ end
 #
 # Create contact types
 #
-contacts_types = Contact.create([{name: 'phone'}, {name: 'email'}])
+contacts_types = Contact.create([{name: 'teléfono'}, {name: 'email'}])
 contact_type_phone = contacts_types[0]
 contact_type_email = contacts_types[1]
 
