@@ -114,7 +114,7 @@
         <% if @most_invoiced_people.each do |mip| %>
           <tr>
             <td><%= mip.name %></td>
-            <td><%= mip.amount %></td>
+            <td>$<%= mip.amount %></td>
             <td><%= mip.total %></td>
           </tr>
         <% end.empty? %>

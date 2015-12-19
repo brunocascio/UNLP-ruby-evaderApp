@@ -29,6 +29,7 @@ es:
   destroy: Eliminar
   new_client: Nuevo Cliente
   new_person: Nueva Persona
+  new_invoice: Nueva Factura
   new: Crear
   remove: Remover
   add_new: Agregar Nuevo
