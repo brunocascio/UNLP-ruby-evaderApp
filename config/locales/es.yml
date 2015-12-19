@@ -25,13 +25,16 @@ es:
   contacts_type: Tipos de Contacto
   people: Personas
   show: Ver
-  edit: Editar
   destroy: Eliminar
+  edit: Editar
+  edit_person: Editar Persona
   new_client: Nuevo Cliente
   new_person: Nueva Persona
   new_invoice: Nueva Factura
   new_contact: Nuevo Contacto
   new: Crear
+  save: Guardar
+  back: Atrás
   remove: Remover
   add_new: Agregar Nuevo
   date:
