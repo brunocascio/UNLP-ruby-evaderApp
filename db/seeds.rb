@@ -6,8 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-contact_email = Contact.create(name: 'email')
-contact_phone = Contact.create(name: 'email')
+contacts_types = Contact.create(
+  [
+    {
+      name: 'phone'
+    },
+    {
+      name: 'email'
+    }
+  ]
+)
 
 #
 # Create clients
@@ -45,11 +53,10 @@ client2 = Client.find(2)
 # Assign contact info
 #
 #
-client1.clients_contacts.build(contact: contact_email, value: 'mail1@mail.com')
-client1.clients_contacts.build(contact: contact_phone, value: '2234567789')
-
-client2.clients_contacts.build(contact: contact_email, value: 'mail2@mail.com')
-client2.clients_contacts.build(contact: contact_phone, value: '2214565455')
+client1.clients_contacts.build(contact: contacts_types[1], value: 'mail1@mail.com').save
+client1.clients_contacts.build(contact: contacts_types[0], value: '2234567789').save
+client2.clients_contacts.build(contact: contacts_types[1], value: 'mail2@mail.com').save
+client2.clients_contacts.build(contact: contacts_types[0], value: '2214565455').save
 
 #
 # Create people
