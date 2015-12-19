@@ -12,6 +12,7 @@ class ClientsController < ApplicationController
   def show
     @invoices_current_year = @client.total_invoices_current_year_by_month
     @amount_total_invoices_by_year = @client.amount_total_invoices_by_year
+    @most_invoiced_people = @client.most_invoiced_people
   end
 
   # GET /clients/new

@@ -97,6 +97,34 @@
         <% end %>
       </tbody>
     </table>
+  </div>
 
+  <div class="row">
+    <h2>Personas a las que más se le ha facturado</h2>
+    <hr>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th><%= t "mame" %></th>
+          <th><%= t "amount" %></th>
+          <th><%= t "total_invoices" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @most_invoiced_people.each do |mip| %>
+          <tr>
+            <td><%= mip.name %></td>
+            <td><%= mip.amount %></td>
+            <td><%= mip.total %></td>
+          </tr>
+        <% end.empty? %>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>

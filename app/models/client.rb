@@ -50,6 +50,15 @@ class Client < ActiveRecord::Base
       .order("strftime('%Y', issue_date)")
   end
 
+  # Most invoiced people
+  def most_invoiced_people
+    self.people
+      .select("people.id as pid, people.name as name, count(*) as total, sum(amount) as amount")
+      .group("people.id")
+      .order("amount DESC")
+      .limit(5)
+  end
+
   def full_name
     "#{self.firstname} #{self.lastname}"
   end
