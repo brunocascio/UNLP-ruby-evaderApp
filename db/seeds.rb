@@ -6,139 +6,67 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-contacts_types = Contact.create(
-  [
-    {
-      name: 'phone'
-    },
-    {
-      name: 'email'
-    }
-  ]
-)
+def generate_cuilt(dni)
+  cuilt = Faker::Number.number(2).to_s
+  cuilt << '-'
+  cuilt << dni
+  cuilt << '-'
+  cuilt << Faker::Number.number(1).to_s
+end
+
+#
+# Create contact types
+#
+contacts_types = Contact.create([{name: 'phone'}, {name: 'email'}])
+contact_type_phone = contacts_types[0]
+contact_type_email = contacts_types[1]
 
 #
 # Create clients
 #
-#
-clients = Client.create(
-  [
-    {
-      firstname: 'Pepe',
-      lastname: 'Perez',
-      cuilt: '20-35415987-3',
-      birthdate: Time.now - 25.year,
-      genre: 'male',
-      identification_number: '35415987'
-    },
-    {
-      firstname: 'Maria',
-      lastname: 'Gonzales',
-      cuilt: '20-32435927-7',
-      birthdate: Time.now - 40.year,
-      genre: 'female',
-      identification_number: '32435927'
-    }
-  ]
-)
+10.times do
+  fullname = Faker::Name.name.split(' ')
+  identification_number = Faker::Number.number(8).to_s
+  cuilt = generate_cuilt(identification_number)
+  Client.create(
+    firstname: fullname.first.truncate(29),
+    lastname: fullname.last.truncate(29),
+    cuilt: cuilt,
+    birthdate: Faker::Date.between(50.year.ago, 18.year.ago),
+    genre: rand(2) == 0 ? 'male' : 'female',
+    identification_number: identification_number
+  )
+end
+
 
 #
-# Get clients
+# Assign contact info to clients
 #
-#
-client1 = Client.find(1)
-client2 = Client.find(2)
-
-#
-# Assign contact info
-#
-#
-client1.clients_contacts.build(contact: contacts_types[1], value: 'mail1@mail.com').save
-client1.clients_contacts.build(contact: contacts_types[0], value: '2234567789').save
-client2.clients_contacts.build(contact: contacts_types[1], value: 'mail2@mail.com').save
-client2.clients_contacts.build(contact: contacts_types[0], value: '2214565455').save
+Client.all.each do |client|
+  client.clients_contacts.build(contact: contact_type_email, value: Faker::Internet.free_email).save
+  client.clients_contacts.build(contact: contact_type_phone, value: Faker::PhoneNumber.cell_phone).save
+end
 
 #
 # Create people
 #
-#
-people = Person.create(
-  [
-    {
-      name: 'Jose Hernandez',
-      person_type: 'fisic',
-      cuilt: '20-12345678-3'
-    },
-    {
-      name: 'Jorge Rodriguez',
-      person_type: 'fisic',
-      cuilt: '20-12345679-3'
-    },
-    {
-      name: 'Josefina Perez',
-      person_type: 'fisic',
-      cuilt: '20-12445670-7'
-    },
-    {
-      name: 'UNLP',
-      person_type: 'juridic',
-      cuilt: '10-38274658-3'
-    }
-  ]
-)
-
-personJose = people[0]
-personJorge = people[1]
-personJosefina = people[2]
-personUNLP = people[3]
+20.times do
+  Person.create(
+    name: (Faker::Name.name).truncate(29),
+    person_type: 'fisic',
+    cuilt: generate_cuilt(Faker::Number.number(8).to_s)
+  )
+end
 
 #
 # Create Invoices
 #
-#
-invoices = Invoice.create(
-  [
-    {
-      description: "Description invoice for #{personJose.name} in month #{(Time.now - 4.month).month} of client #{client1.id}",
-      amount: 1010.00,
-      issue_date: Time.now - 4.month,
-      client_id: client1.id,
-      person_id: personJose.id
-    },
-    {
-      description: "Description invoice for #{personJose.name} in month #{(Time.now - 3.month).month} of client #{client1.id}",
-      amount: 1010.00,
-      issue_date: Time.now - 3.month,
-      client_id: client1.id,
-      person_id: personJose.id
-    },
-    {
-      description: "Description invoice for #{personJose.name} in month #{(Time.now - 2.month).month} of client #{client1.id}",
-      amount: 1010.00,
-      issue_date: Time.now - 2.month,
-      client_id: client1.id,
-      person_id: personJose.id
-    },
-    {
-      description: "Description invoice for #{personJose.name} in month #{(Time.now - 1.month).month} of client #{client1.id}",
-      amount: 1010.00,
-      issue_date: Time.now - 1.month,
-      client_id: client1.id,
-      person_id: personJose.id
-    },
-    {
-      description: "Description invoice for #{personJorge.name} in month #{(Time.now - 4.month).month} of client #{client2.id}",
-      amount: 1000.00,
-      issue_date: Time.now - 4.month,
-      client_id: client2.id,
-      person_id: personJorge.id
-    },
-    {
-      description: "Description invoice for #{personUNLP.name} in month #{(Time.now - 3.month).month} of client #{client2.id}",
-      amount: 10000.00,
-      issue_date: Time.now - 3.month,
-      client_id: client2.id,
-      person_id: personUNLP.id
-    }
-  ]
-)
+100.times do
+  Invoice.create(
+    description: Faker::Lorem.sentence,
+    amount: Faker::Number.decimal(4),
+    issue_date: Faker::Date.between(2.year.ago, Date.today),
+    client_id: Client.order('RANDOM()').limit(1).select("id").pluck("id").first,
+    person_id: Person.order('RANDOM()').limit(1).select("id").pluck("id").first
+  )
+end

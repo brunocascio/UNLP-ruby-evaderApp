@@ -47,6 +47,7 @@ end
 
 # Custom gems
 
+gem "faker", :group => [ :development ]
 gem "twitter-bootstrap-rails"
 gem "simple_form"
 gem "nested_form"
