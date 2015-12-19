@@ -15,23 +15,43 @@
   <hr>
 
   <div class="row jumbotron">
+    <div class="pull-right">
+      <button class="btn btn-sm btn-info toggler" type="button" data-show="#contacts" data-hide="#meta-info">Contactar</button>
+    </div>
     <div class="pull-left">
       <%= profile_placeholder @client %>
     </div>
     <div class="col-sm-8">
-      <h1><%= @client.full_name %> <small class="years_old">(<%= @client.age_s %>)</small></h1>
-      <p>
-        <strong><%= t 'cuil_cuit' %>:</strong>
-        <%= @client.cuilt %>
-      </p>
-      <p>
-        <strong><%= t 'identification_number' %>:</strong>
-        <%= @client.identification_number %>
-      </p>
-      <p>
-        <strong><%= t 'genre' %>:</strong>
-        <%= t @client.genre %>
-      </p>
+      <div class="hidden" id="contacts">
+        <% if @client.clients_contacts.count > 0 %>
+          <p>Medios de contacto:</p>
+          <ul class="list-group">
+            <% @client.clients_contacts.each do |cc| %>
+            <li class="list-group-item">
+              <strong><%= cc.contact.name.capitalize %>:</strong>
+              <%= cc.value %>
+            </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>No tiene medios de contacto</p>
+        <% end %>
+      </div><!-- #contacts -->
+      <div id="meta-info">
+        <h1><%= @client.full_name %> <small class="years_old">(<%= @client.age_s %>)</small></h1>
+        <p>
+          <strong><%= t 'cuil_cuit' %>:</strong>
+          <%= @client.cuilt %>
+        </p>
+        <p>
+          <strong><%= t 'identification_number' %>:</strong>
+          <%= @client.identification_number %>
+        </p>
+        <p>
+          <strong><%= t 'genre' %>:</strong>
+          <%= t @client.genre %>
+        </p>
+      </div><!-- #meta-info -->
     </div>
   </div>
 
@@ -40,9 +60,13 @@
     <hr>
     <table class="table table-bordered">
       <tbody>
-        <% @amount_total_invoices_by_year.each do |ay| %>
+        <% if @amount_total_invoices_by_year.each do |ay| %>
           <tr>
             <td><%= "En #{ay.year} facturó $#{ay.total}" %></td>
+          </tr>
+        <% end.empty? %>
+          <tr>
+            <td>No posee facturas</td>
           </tr>
         <% end %>
       </tbody>
@@ -60,10 +84,15 @@
         </tr>
       </thead>
       <tbody>
-        <% @invoices_current_year.each do |icy| %>
+        <% if @invoices_current_year.each do |icy| %>
           <tr>
             <td><%= get_month_name(icy.month) %></td>
             <td><%= icy.total %></td>
+          </tr>
+        <% end.empty? %>
+          <tr>
+            <td>-</td>
+            <td>-</td>
           </tr>
         <% end %>
       </tbody>

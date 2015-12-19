@@ -7,4 +7,8 @@ class Contact < ActiveRecord::Base
     uniqueness: true,
     format: { with: /\A[a-zA-Z\-_]+\z/ },
     length: { minimum: 2 }
+
+  def to_s
+    self.name
+  end
 end

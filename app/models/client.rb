@@ -2,12 +2,13 @@ class Client < ActiveRecord::Base
   enum genre: {male: 0, female: 1}
   has_many :clients_contacts
   has_many :contacts, through: :clients_contacts
+  accepts_nested_attributes_for :clients_contacts, reject_if: :all_blank, :allow_destroy => true
   has_many :invoices, dependent: :restrict_with_error
   has_many :people, through: :invoices
 
   validates :firstname, :lastname,
     presence: true,
-    format: { with: /\A[a-zA-Z\s]+\z/, message: "only allows letters" },
+    format: { with: /\A[\p{L}\s]+\z/, message: "only allows letters" },
     length: { minimum: 2, maximum: 30 }
 
   validates :genre,
