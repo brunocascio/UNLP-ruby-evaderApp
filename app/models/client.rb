@@ -36,7 +36,7 @@ class Client < ActiveRecord::Base
   # Total of invoices on current year grouped by months
   def total_invoices_current_year_by_month
     self.invoices
-      .select("strftime('%m', issue_date) as month, count(*) as total")
+      .select("strftime('%m', issue_date) as month, COUNT(*) as total")
       .where("strftime('%Y', issue_date) = ?", Time.now.year.to_s)
       .group("strftime('%m', issue_date)")
       .order("strftime('%m', issue_date)")
@@ -45,18 +45,18 @@ class Client < ActiveRecord::Base
   # Amount total of invoices on current year
   def amount_total_invoices_by_year
     self.invoices
-      .select("strftime('%Y', issue_date) as year, sum(amount) as total")
+      .select("strftime('%Y', issue_date) as year, ROUND(SUM(amount),2) as total")
       .group("strftime('%Y', issue_date)")
       .order("strftime('%Y', issue_date)")
   end
 
   # Most invoiced people
-  def most_invoiced_people
+  def most_invoiced_people(limit)
     self.people
-      .select("people.id as pid, people.name as name, count(*) as total, sum(amount) as amount")
+      .select("people.id as pid, people.name as name, COUNT(*) as total, ROUND(SUM(amount),2) as amount")
       .group("people.id")
       .order("amount DESC")
-      .limit(5)
+      .limit(limit)
   end
 
   def full_name
