@@ -32,9 +32,36 @@ class Client < ActiveRecord::Base
     format: { with: /\A[0-9]+\z/, message: "only allows numbers" },
     length: { minimum: 6, maximum: 8 }
 
+  # Total of invoices on current year grouped by months
+  def total_invoices_current_year_by_month
+    self.invoices
+      .select("strftime('%m', issue_date) as month, count(*) as total")
+      .where("strftime('%Y', issue_date) = ?", Time.now.year.to_s)
+      .group("strftime('%m', issue_date)")
+      .order("strftime('%m', issue_date)")
+  end
+
+  # Amount total of invoices on current year
+  def amount_total_invoices_by_year
+    self.invoices
+      .select("strftime('%Y', issue_date) as year, sum(amount) as total")
+      .group("strftime('%Y', issue_date)")
+      .order("strftime('%Y', issue_date)")
+  end
 
   def full_name
-    self.firstname << ' ' << self.lastname
+    "#{self.firstname} #{self.lastname}"
+  end
+
+  def age
+    age = Date.today.year - self.birthdate.year
+    # for days before birthday
+    age -= 1 if Date.today < self.birthdate + age.years
+    age.to_i
+  end
+
+  def age_s
+    "#{self.age.to_s} " << (I18n.t("years"))
   end
 
   def to_s

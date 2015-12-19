@@ -1,34 +1,73 @@
-<p id="notice"><%= notice %></p>
+<div class="col-sm-10 col-sm-offset-1">
+  <div class="row">
+    <%= render template: 'shared/_notices' %>
+  </div>
 
-<p>
-  <strong>Firstname:</strong>
-  <%= @client.firstname %>
-</p>
+  <div class="row bg-info">
+    <div class="pull-left">
+      <%= link_to 'Back', clients_path, :class => 'btn btn-sm btn-default' %>
+    </div>
+    <div class="pull-right">
+      <%= link_to 'Edit', edit_client_path(@client), :class => 'btn btn-sm btn-warning' %>
+    </div>
+  </div>
 
-<p>
-  <strong>Lastname:</strong>
-  <%= @client.lastname %>
-</p>
+  <hr>
 
-<p>
-  <strong>Birthdate:</strong>
-  <%= @client.birthdate %>
-</p>
+  <div class="row jumbotron">
+    <div class="pull-left">
+      <%= profile_placeholder @client %>
+    </div>
+    <div class="col-sm-8">
+      <h1><%= @client.full_name %> <small class="years_old">(<%= @client.age_s %>)</small></h1>
+      <p>
+        <strong><%= t 'cuil_cuit' %>:</strong>
+        <%= @client.cuilt %>
+      </p>
+      <p>
+        <strong><%= t 'identification_number' %>:</strong>
+        <%= @client.identification_number %>
+      </p>
+      <p>
+        <strong><%= t 'genre' %>:</strong>
+        <%= t @client.genre %>
+      </p>
+    </div>
+  </div>
 
-<p>
-  <strong>Genre:</strong>
-  <%= @client.genre %>
-</p>
+  <div class="row">
+    <h2>Facturado por año</h2>
+    <hr>
+    <table class="table table-bordered">
+      <tbody>
+        <% @amount_total_invoices_by_year.each do |ay| %>
+          <tr>
+            <td><%= "En #{ay.year} facturó $#{ay.total}" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
-<p>
-  <strong>Identification number:</strong>
-  <%= @client.identification_number %>
-</p>
+  <div class="row">
+    <h2>Total de facturas por mes del año <%= Time.now.year %></h2>
+    <hr>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th><%= t "month" %></th>
+          <th><%= t "total_invoices" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @invoices_current_year.each do |icy| %>
+          <tr>
+            <td><%= get_month_name(icy.month) %></td>
+            <td><%= icy.total %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<p>
-  <strong>Cuilt:</strong>
-  <%= @client.cuilt %>
-</p>
-
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+  </div>
+</div>

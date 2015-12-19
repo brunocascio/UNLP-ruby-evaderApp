@@ -10,6 +10,8 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
+    @invoices_current_year = @client.total_invoices_current_year_by_month
+    @amount_total_invoices_by_year = @client.amount_total_invoices_by_year
   end
 
   # GET /clients/new

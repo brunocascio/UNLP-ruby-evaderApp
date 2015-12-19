@@ -1,5 +1,13 @@
 ---
 es:
+  years: Años
+  identification_number: Número de Identificación
+  genre: Sexo
+  cuil_cuit: Cuil/Cuit
+  female: Femenino
+  male: Masculino
+  month: Mes
+  total_invoices: Total de facturas
   date:
     abbr_day_names:
     - dom
