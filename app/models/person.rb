@@ -5,7 +5,7 @@ class Person < ActiveRecord::Base
 
   validates :name,
     presence: true,
-    format: { with: /\A[a-zA-Z\s]+\z/, message: "only allows letters" },
+    format: { with: /\A[\p{L}\s]+\z/, message: "only allows letters" },
     length: { minimum: 2, maximum: 30 }
 
   validates :person_type,

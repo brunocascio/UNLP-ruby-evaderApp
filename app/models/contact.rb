@@ -5,7 +5,7 @@ class Contact < ActiveRecord::Base
   validates :name,
     presence: true,
     uniqueness: true,
-    format: { with: /\A[a-zA-Z\-_]+\z/ },
+    format: { with: /\A[\p{L}\s\-_]+\z/ },
     length: { minimum: 2 }
 
   def to_s
