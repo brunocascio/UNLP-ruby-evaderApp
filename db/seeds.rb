@@ -53,7 +53,7 @@ end
 20.times do
   Person.create(
     name: (Faker::Name.name).truncate(29),
-    person_type: 'fisic',
+    person_type: rand(2) == 0 ? 'fisic' : 'juridic',
     cuilt: generate_cuilt(Faker::Number.number(8).to_s)
   )
 end
