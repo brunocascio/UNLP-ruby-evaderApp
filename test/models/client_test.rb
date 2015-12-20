@@ -84,6 +84,11 @@ class ClientTest < ActiveSupport::TestCase
     @cuiltInvalidClient[:cuilt] = '12345678--3'
     assert_not Client.new(@cuiltInvalidClient).save(), "Shouldn't create a client with invalid cuil/cuilt format"
 
+    # Gender Validations
+    @genderInvalidClient = @data.clone
+    @genderInvalidClient[:genre] = 'not_a_valid_gender'
+    assert_raises(ArgumentError){ Client.new(@genderInvalidClient) }
+
     # identification Number Validations
     @INInvalidClient = @data.clone
     @INInvalidClient[:identification_number] = ''

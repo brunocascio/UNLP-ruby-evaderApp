@@ -28,6 +28,7 @@ class PersonTest < ActiveSupport::TestCase
     assert_not Person.new(name: 'name of person', person_type: 'juridic', cuilt: '--').save(), "Shouldn't create a new person with invalid cuil/cuit format"
     assert_not Person.new(name: 'name of person', person_type: 'juridic', cuilt: '00000000--').save(), "Shouldn't create a new person with invalid cuil/cuit format"
     assert_not Person.new(name: 'name of person', person_type: 'juridic', cuilt: '0-0000000-').save(), "Shouldn't create a new person with invalid cuil/cuit format"
+    assert_raises(ArgumentError){ Person.new(person_type: 'not_a_valid_person_type') }
   end
 
   test "Try to creates person with duplicated cuilt" do
