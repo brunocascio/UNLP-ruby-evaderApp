@@ -36,7 +36,7 @@ class PersonTest < ActiveSupport::TestCase
     assert_not Person.new(cuilt: people(:personWithName).cuilt, name: 'other person', person_type: 'fisic').save(), "Shouldn't create a new person with duplicated cuilt"
   end
 
-  test "Try to delete all contacts" do
+  test "Try to delete all people" do
     Person.all.each do |p|
       if (p.invoices.count == 0)
         assert p.destroy(), "Should delete a person."
