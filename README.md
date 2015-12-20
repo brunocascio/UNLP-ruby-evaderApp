@@ -6,7 +6,7 @@
 
 ## Run
 
-Execute migrations: `rake db:migrate`
+Execute migrations && seeds: `rake db:setup`
 
 Run the server: `bundle exec rails s`
 
