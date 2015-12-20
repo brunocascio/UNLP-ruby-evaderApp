@@ -8,7 +8,7 @@ class Client < ActiveRecord::Base
 
   validates :firstname, :lastname,
     presence: true,
-    format: { with: /\A[\p{L}\s.]+\z/, message: "only allows letters" },
+    format: { with: /\A[\p{L}\s.]+\z/ },
     length: { minimum: 2, maximum: 30 }
 
   validates :genre,
@@ -24,13 +24,13 @@ class Client < ActiveRecord::Base
 
   validates :cuilt,
     presence: true,
-    format: { with: /\A\d{2}\-\d{8}\-\d{1}\z/, message: "must numerically with format XX-XXXXXXXX-X" },
+    format: { with: /\A\d{2}\-\d{8}\-\d{1}\z/ },
     uniqueness: true
 
   validates :identification_number,
     presence: true,
     numericality: { only_integer: true },
-    format: { with: /\A[0-9]+\z/, message: "only allows numbers" },
+    format: { with: /\A[0-9]+\z/ },
     length: { minimum: 6, maximum: 8 }
 
   # Total of invoices on current year grouped by months
@@ -75,6 +75,6 @@ class Client < ActiveRecord::Base
   end
 
   def to_s
-    self.full_name
+    "#{self.full_name} (#{self.identification_number})"
   end
 end

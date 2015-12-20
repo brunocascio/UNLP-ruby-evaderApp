@@ -5,7 +5,7 @@
     <%= f.input :firstname %>
     <%= f.input :lastname %>
     <%= f.input :birthdate, html5: true, dateformat:'dd/mm/yyyy' %>
-    <%= f.input :genre, :collection => Client.genres.keys %>
+    <%= f.input :genre, collection: Client.genres.keys, prompt: :translate %>
     <%= f.input :identification_number %>
     <%= f.input :cuilt %>
     <label><%= t "contact_types" %></label>

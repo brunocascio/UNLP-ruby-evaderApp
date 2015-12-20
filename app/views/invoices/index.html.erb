@@ -28,8 +28,8 @@
             <td><%= invoice.description %></td>
             <td>$<%= invoice.amount %></td>
             <td><%= t invoice.issue_date, format: :default %></td>
-            <td><%= invoice.client %></td>
-            <td><%= invoice.person %></td>
+            <td><%= invoice.client.full_name %></td>
+            <td><%= invoice.person.name %></td>
             <td>
               <%= render template: 'shared/_actions', locals: {model: invoice} %>
             </td>

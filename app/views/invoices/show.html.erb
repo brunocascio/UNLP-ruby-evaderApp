@@ -1,29 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="col-sm-10 col-sm-offset-1">
+  <div class="row">
+    <%= render template: 'shared/_notices' %>
+  </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @invoice.description %>
-</p>
+  <div class="row bg-info">
+    <div class="pull-left">
+      <%= link_to t('back'), invoices_path, :class => 'btn btn-sm btn-default' %>
+    </div>
+    <div class="pull-right">
+      <%= link_to t('edit'), edit_invoice_path(@invoice), :class => 'btn btn-sm btn-warning' %>
+    </div>
+  </div>
 
-<p>
-  <strong>Amount:</strong>
-  <%= @invoice.amount %>
-</p>
+  <hr>
 
-<p>
-  <strong>Issue date:</strong>
-  <%= @invoice.issue_date %>
-</p>
-
-<p>
-  <strong>Client:</strong>
-  <%= @invoice.client %>
-</p>
-
-<p>
-  <strong>Person:</strong>
-  <%= @invoice.person %>
-</p>
-
-<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back', invoices_path %>
+  <div class="col-md-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= t('description') %></th>
+          <th><%= t('amount') %></th>
+          <th><%= t('issue_date') %></th>
+          <th><%= t('client') %></th>
+          <th><%= t('person') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @invoice.description %></td>
+          <td><%= @invoice.amount %></td>
+          <td><%= @invoice.issue_date %></td>
+          <td><%= @invoice.client %></td>
+          <td><%= @invoice.person %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

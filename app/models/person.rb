@@ -5,7 +5,7 @@ class Person < ActiveRecord::Base
 
   validates :name,
     presence: true,
-    format: { with: /\A[\p{L}\s.]+\z/, message: "only allows letters" },
+    format: { with: /\A[\p{L}\s.]+\z/ },
     length: { minimum: 2, maximum: 30 }
 
   validates :person_type,
@@ -15,9 +15,9 @@ class Person < ActiveRecord::Base
   validates :cuilt,
     presence: true,
     uniqueness: true,
-    format: { with: /\A\d{2}\-\d{8}\-\d{1}\z/, message: "must numerically with format XX-XXXXXXXX-X" }
+    format: { with: /\A\d{2}\-\d{8}\-\d{1}\z/ }
 
   def to_s
-    self.name
+    "#{self.name} (#{self.cuilt})"
   end
 end

@@ -1,4 +1,5 @@
 <%= simple_form_for(@invoice) do |f| %>
+
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -9,7 +10,9 @@
     <%= f.association :person %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="actions">
+    <%= f.button :submit, :value => t('save') %>
+    <%= link_to t('back'), invoices_path, :class => 'btn btn-danger' %>
   </div>
+
 <% end %>

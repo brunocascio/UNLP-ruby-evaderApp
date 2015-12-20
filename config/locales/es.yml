@@ -28,6 +28,9 @@ es:
   destroy: Eliminar
   edit: Editar
   edit_person: Editar Persona
+  edit_contact: Editar Contacto
+  edit_client: Editar Cliente
+  edit_invoice: Editar Factura
   new_client: Nuevo Cliente
   new_person: Nueva Persona
   new_invoice: Nueva Factura

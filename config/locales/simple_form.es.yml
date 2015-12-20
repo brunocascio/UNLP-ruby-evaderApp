@@ -1,11 +1,36 @@
 es:
   simple_form:
+    error_notification:
+      default_message: "Hay campos con errores"
     options:
-      defaults:
+      client:
         genre:
           male: Masculino
           female: Femenino
+      person:
+        person_type:
+          fisic: Física
+          juridic: Jurídica
     labels:
       user:
         login: Usuario
         password: Contraseña
+      contact:
+        name: Nombre
+      client:
+        firstname: Nombre
+        lastname: Apellido
+        birthdate: Fecha de Nacimiento
+        genre: Sexo
+        identification_number: Número de Documento
+        cuilt: Cuil/Cuit
+      person:
+        name: Nombre
+        person_type: Tipo de persona
+        cuilt: Cuil/Cuit
+      invoice:
+        description: Descripción
+        amount: Monto
+        issue_date: Fecha de Emisión
+        client: Cliente
+        person: Persona
