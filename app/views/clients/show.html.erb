@@ -62,7 +62,7 @@
       <tbody>
         <% if @amount_total_invoices_by_year.each do |ay| %>
           <tr>
-            <td><%= "En #{ay.year} facturó $#{ay.total}" %></td>
+            <td><%= "En #{ay.year} facturó #{number_to_currency(ay.total, precision: 2)}" %></td>
           </tr>
         <% end.empty? %>
           <tr>

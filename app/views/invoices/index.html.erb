@@ -26,7 +26,7 @@
         <% @invoices.each do |invoice| %>
           <tr>
             <td><%= invoice.description %></td>
-            <td>$<%= invoice.amount %></td>
+            <td><%= number_to_currency(invoice.amount, precision: 2) %></td>
             <td><%= t invoice.issue_date, format: :default %></td>
             <td><%= invoice.client.full_name %></td>
             <td><%= invoice.person.name %></td>
