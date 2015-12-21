@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class InvoiceTest < ActiveSupport::TestCase
-  test "Creates ivoices with valid data" do
+  test "Creates invoices with valid data" do
     invoices().each do |i|
       assert i.save
     end
