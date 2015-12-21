@@ -40,6 +40,12 @@ es:
   back: Atrás
   remove: Remover
   add_new: Agregar Nuevo
+  person_cannot_be_deleted: La persona no puede ser eliminada, porque tiene facturas asociadas
+  person_was_successfully_destroyed: La persona ha sido eliminada
+  client_cannot_be_deleted: El cliente no puede ser eliminado, porque tiene facturas asociadas
+  client_was_successfully_destroyed: El cliente ha sido eliminado
+  client_was_successfully_created: El cliente ha sido creado
+  client_was_successfully_updated: El cliente ha sido actualizado
   date:
     abbr_day_names:
     - dom
