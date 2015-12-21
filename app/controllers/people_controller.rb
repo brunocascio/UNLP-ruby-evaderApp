@@ -54,9 +54,12 @@ class PeopleController < ApplicationController
   # DELETE /people/1
   # DELETE /people/1.json
   def destroy
-    @person.destroy
+    msg = t 'person_cannot_be_deleted'
+    if @person.destroy
+      msg = t 'person_was_successfully_destroyed.'
+    end
     respond_to do |format|
-      format.html { redirect_to people_url, notice: 'Person was successfully destroyed.' }
+      format.html { redirect_to people_url, notice: msg }
       format.json { head :no_content }
     end
   end
