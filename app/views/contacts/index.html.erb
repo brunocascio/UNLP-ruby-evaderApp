@@ -1,0 +1,32 @@
+<div class="col-sm-6 col-sm-offset-3">
+  <div class="row">
+    <%= render template: 'shared/_notices' %>
+  </div>
+
+  <div class="row pull-right">
+    <%= link_to t('new_contact'), new_contact_path, :class => 'btn btn-sm btn-success' %>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th><%= t "name" %></th>
+          <th><%= t "actions" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @contacts.each do |contact| %>
+          <tr>
+            <td><%= contact.name %></td>
+            <td>
+              <%= render template: 'shared/_actions', locals: {model: contact} %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

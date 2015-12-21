@@ -1,0 +1,14 @@
+<%= simple_form_for(@contact) do |f| %>
+
+  <%= f.error_notification %>
+
+  <div class="field">
+    <%= f.input :name, placeholder: t('name') %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit, :value => t('save') %>
+    <%= link_to t('back'), contacts_path, :class => 'btn btn-danger' %>
+  </div>
+
+<% end %>

@@ -1,0 +1,33 @@
+<div class="col-sm-10 col-sm-offset-1">
+  <div class="row">
+    <%= render template: 'shared/_notices' %>
+  </div>
+
+  <div class="row bg-info clearfix">
+    <div class="pull-left">
+      <%= link_to t('back'), people_path, :class => 'btn btn-sm btn-default' %>
+    </div>
+    <div class="pull-right">
+      <%= link_to t('edit'), edit_person_path(@person), :class => 'btn btn-sm btn-warning' %>
+    </div>
+  </div>
+  <hr>
+  <div class="col-md-6 col-md-offset-3">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= t('name') %></th>
+          <th><%= t('person_type') %></th>
+          <th><%= t('cuil_cuit') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @person.name %></td>
+          <td><%= @person.person_type %></td>
+          <td><%= @person.cuilt %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

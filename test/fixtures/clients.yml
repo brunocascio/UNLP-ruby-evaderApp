@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+client1:
+  firstname: Juan Carlos
+  lastname: Perez
+  cuilt: 20-35456986-3
+  birthdate: 1991-7-28
+  genre: 0
+  identification_number: 35456986
+
+client2:
+  firstname: Maria
+  lastname: Gonzalez
+  cuilt: 20-35436564-0
+  birthdate: 1992-1-3
+  genre: 1
+  identification_number: 35436564
+
+client3:
+  firstname: Pedro
+  lastname: Sarasa
+  cuilt: 20-34426936-3
+  birthdate: 1990-11-28
+  genre: 0
+  identification_number: 34426936
+
+client4:
+  firstname: Josefina
+  lastname: Martinez
+  cuilt: 20-32436544-0
+  birthdate: 1986-1-15
+  genre: 1
+  identification_number: 32436544

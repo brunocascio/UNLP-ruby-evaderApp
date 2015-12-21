@@ -45,3 +45,11 @@ group :development do
   gem 'spring'
 end
 
+# Custom gems
+
+gem 'nprogress-rails'
+gem "faker", :group => [ :development ]
+gem "twitter-bootstrap-rails"
+gem "simple_form"
+gem "nested_form"
+gem "date_validator"

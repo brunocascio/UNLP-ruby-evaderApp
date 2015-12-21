@@ -2,13 +2,40 @@
 <html>
 <head>
   <title>Evader</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+  <body>
 
-<%= yield %>
+    <header>
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <%= link_to 'E-VADER', clients_path, :class => 'navbar-brand' %>
+          </div>
 
-</body>
+          <div class="collapse navbar-collapse" id="bs-navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="<%= is_current_page(invoices_path) %>"><%= link_to t('invoices'), invoices_path %></li>
+              <li class="<%= is_current_page(clients_path) %>"><%= link_to t('clients'), clients_path %></li>
+              <li class="<%= is_current_page(contacts_path) %>"><%= link_to t('contacts'), contacts_path %></li>
+              <li class="<%= is_current_page(people_path) %>"><%= link_to t('people'), people_path %></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-fluid">
+      <%= yield %>
+    </main>
+  </body>
 </html>

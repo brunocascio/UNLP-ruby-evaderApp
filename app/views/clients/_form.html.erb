@@ -1,0 +1,28 @@
+<%= simple_nested_form_for(@client) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :firstname %>
+    <%= f.input :lastname %>
+    <%= f.input :birthdate, html5: true, dateformat:'dd/mm/yyyy' %>
+    <%= f.input :genre, collection: Client.genres.keys, prompt: :translate %>
+    <%= f.input :identification_number %>
+    <%= f.input :cuilt %>
+    <label><%= t "contact_types" %></label>
+    <p><%= f.link_to_add t("new_contact"), :clients_contacts, :class => 'btn btn-sm btn-success', :data => { :target => "#clients_contacts" } %></p>
+    <table class="table" id="clients_contacts">
+      <%= f.fields_for :clients_contacts, :wrapper => false do |cc| %>
+        <tr class="fields">
+          <td><%= cc.input :contact_id, :as => :select, collection: Contact.all, include_blank: true %></td>
+          <td><%= cc.input :value %></td>
+          <td><%= cc.link_to_remove t"remove" %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn btn-success', value: t('save') %>
+    <%= link_to t('back'), clients_path, :class => 'btn btn-danger' %>
+  </div>
+<% end %>

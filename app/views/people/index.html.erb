@@ -1,0 +1,37 @@
+<div class="col-sm-8 col-sm-offset-2">
+
+  <div class="row">
+    <%= render template: 'shared/_notices' %>
+  </div>
+
+  <div class="row pull-right">
+    <%= link_to t('new_person'), new_person_path, :class => 'btn btn-sm btn-success' %>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th><%= t "name" %></th>
+          <th><%= t "person_type" %></th>
+          <th><%= t "cuil_cuit" %></th>
+          <th><%= t "actions" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @people.each do |person| %>
+          <tr>
+            <td><%= person.name %></td>
+            <td><%= person.person_type %></td>
+            <td><%= person.cuilt %></td>
+            <td>
+              <%= render template: 'shared/_actions', locals: {model: person} %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

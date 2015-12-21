@@ -1,0 +1,36 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+invoice1:
+  description: description invoice 1 on month 10
+  amount: 129.99
+  issue_date: 2015-10-16
+  client: client1
+  person: personWithName
+
+invoice2:
+  description: description invoice 2 on month 11
+  amount: 329.99
+  issue_date: 2015-11-16
+  client: client1
+  person: personWithName
+
+invoice3:
+  description: description invoice 3 on month 12
+  amount: 229.99
+  issue_date: 2015-12-16
+  client: client1
+  person: personWithName
+
+invoice4:
+  description: description invoice 4 on month 12
+  amount: 1229.99
+  issue_date: 2015-12-16
+  client: client2
+  person: personWithReason
+
+invoice5:
+  description: description invoice 5 on month 12
+  amount: 1320.00
+  issue_date: 2015-12-14
+  client: client3
+  person: personWithReason2

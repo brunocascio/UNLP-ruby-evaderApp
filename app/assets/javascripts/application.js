@@ -12,5 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require turbolinks
+//= require nprogress
+//= require nprogress-turbolinks
+//= require jquery_nested_form
 //= require_tree .
+
+NProgress.configure({
+ showSpinner: false,
+ ease: 'ease',
+ speed: 500
+});

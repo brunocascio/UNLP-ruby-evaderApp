@@ -1,0 +1,41 @@
+<div class="col-sm-12">
+
+  <div class="row">
+    <%= render template: 'shared/_notices' %>
+  </div>
+
+  <div class="row pull-right">
+    <%= link_to t('new_invoice'), new_invoice_path, :class => 'btn btn-sm btn-success' %>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th><%= t "description" %></th>
+          <th><%= t "amount" %></th>
+          <th><%= t "issue_date" %></th>
+          <th><%= t "client" %></th>
+          <th><%= t "person" %></th>
+          <th><%= t "actions" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @invoices.each do |invoice| %>
+          <tr>
+            <td><%= invoice.description %></td>
+            <td><%= number_to_currency(invoice.amount, precision: 2) %></td>
+            <td><%= t invoice.issue_date, format: :default %></td>
+            <td><%= invoice.client.full_name %></td>
+            <td><%= invoice.person.name %></td>
+            <td>
+              <%= render template: 'shared/_actions', locals: {model: invoice} %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -48,9 +48,13 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
+    date_validator (0.8.1)
+      activemodel
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.6.0)
+    faker (1.6.1)
+      i18n (~> 0.5)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -70,8 +74,10 @@ GEM
     mini_portile (0.6.2)
     minitest (5.8.3)
     multi_json (1.11.2)
+    nested_form (0.3.2)
     nokogiri (1.6.6.4)
       mini_portile (~> 0.6.0)
+    nprogress-rails (0.1.6.7)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -111,6 +117,9 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    simple_form (3.2.0)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
     spring (1.4.4)
     sprockets (3.4.1)
       rack (> 1, < 3)
@@ -124,6 +133,11 @@ GEM
     tilt (2.0.1)
     turbolinks (2.5.3)
       coffee-rails
+    twitter-bootstrap-rails (3.2.0)
+      actionpack (~> 4.1)
+      execjs (~> 2.2)
+      rails (~> 4.1)
+      railties (~> 4.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
@@ -141,14 +155,20 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
+  date_validator
+  faker
   jbuilder (~> 2.0)
   jquery-rails
+  nested_form
+  nprogress-rails
   rails (= 4.2.5)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  simple_form
   spring
   sqlite3
   turbolinks
+  twitter-bootstrap-rails
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
 

@@ -1,0 +1,44 @@
+<div class="col-sm-10 col-sm-offset-1">
+
+  <div class="row">
+    <%= render template: 'shared/_notices' %>
+  </div>
+
+  <div class="row pull-right">
+    <%= link_to t('new_client'), new_client_path, :class => 'btn btn-sm btn-success' %>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th><%= t "firstname" %></th>
+          <th><%= t "lastname" %></th>
+          <th><%= t "birthdate" %></th>
+          <th><%= t "genre" %></th>
+          <th><%= t "identification_number" %></th>
+          <th><%= t "cuil_cuit" %></th>
+          <th><%= t "actions" %></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @clients.each do |client| %>
+          <tr>
+            <td><%= client.firstname %></td>
+            <td><%= client.lastname %></td>
+            <td><%= client.birthdate %></td>
+            <td><%= client.genre %></td>
+            <td><%= client.identification_number %></td>
+            <td><%= client.cuilt %></td>
+            <td>
+              <%= render template: 'shared/_actions', locals: {model: client} %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

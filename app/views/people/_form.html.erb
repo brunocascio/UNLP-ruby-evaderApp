@@ -1,0 +1,14 @@
+<%= simple_form_for(@person) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :person_type, :as => :select, :collection => Person.person_types.keys %>
+    <%= f.input :cuilt %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn btn-success', value: t('save') %>
+    <%= link_to t('back'), people_path, :class => 'btn btn-danger' %>
+  </div>
+<% end %>
