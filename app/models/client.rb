@@ -2,7 +2,7 @@ class Client < ActiveRecord::Base
   enum genre: {male: 0, female: 1}
   has_many :clients_contacts
   has_many :contacts, through: :clients_contacts
-  accepts_nested_attributes_for :clients_contacts, reject_if: :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :clients_contacts, :allow_destroy => true
   has_many :invoices, dependent: :restrict_with_error
   has_many :people, through: :invoices
 
