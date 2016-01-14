@@ -13,7 +13,7 @@
     <table class="table" id="clients_contacts">
       <%= f.fields_for :clients_contacts, :wrapper => false do |cc| %>
         <tr class="fields">
-          <td><%= cc.input :contact_id, :as => :select, collection: Contact.all, include_blank: true %></td>
+          <td><%= cc.input :contact_id, collection: Contact.all, include_blank: false %></td>
           <td><%= cc.input :value %></td>
           <td><%= cc.link_to_remove t"remove" %></td>
         </tr>
