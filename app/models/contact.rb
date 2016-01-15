@@ -1,5 +1,5 @@
 class Contact < ActiveRecord::Base
-  has_many :clients_contacts
+  has_many :clients_contacts, inverse_of: :contact
   has_many :clients, through: :clients_contacts
 
   validates :name,
